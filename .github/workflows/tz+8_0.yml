@@ -1,0 +1,15 @@
+name: cron jobs
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  cronjobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger
+        shell: bash
+        run: |
+          curl -X POST ${{ secrets.WEBAPI }}
+          curl -X POST ${{ secrets.WALINE }}
