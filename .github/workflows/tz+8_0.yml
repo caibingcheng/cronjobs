@@ -5,7 +5,7 @@ on:
     - cron: '0 16 * * *'
 
 jobs:
-  cronjobs:
+  cronjobs-trigger:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger
@@ -13,3 +13,16 @@ jobs:
         run: |
           curl -X POST ${{ secrets.WEBAPI }}
           curl -X POST ${{ secrets.WALINE }}
+          
+  cronjobs-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/caibingcheng
+          dst: gitee/caibingcheng
+          force_update: true
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          static_list: "rssblog-source,orlike,picrc,tchat,orlike-vercel,blog,codemo,rssblog,autojs"
