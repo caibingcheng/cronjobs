@@ -28,4 +28,4 @@ jobs:
           force_update: true
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: "rssblog-source,orlike,picrc,tchat,orlike-vercel,blog,codemo,rssblog,autojs,cronjobs"
+          static_list: "rssblog-source,orlike,picrc,tchat,orlike-vercel,blog,codemo,rssblog,autojs,cronjobs,hugo-algolia2"
